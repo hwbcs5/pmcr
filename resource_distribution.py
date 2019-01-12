@@ -24,7 +24,7 @@ def resource_distribution(graph, uid, k, item_u):
         op = []    #the overlapped preference set
         cp = []    #the complementary preference set
         cps = []   #the subsets of the complementary preference set
-        cpsindex = {}
+        cpsindex = {} #the projection of subset and its index in cps
         index = 0
         overlapped_items = [i for i in user.item_list if i in item_u]
         #calculate op and cp

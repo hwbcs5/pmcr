@@ -27,9 +27,12 @@ def resource_distribution(graph, uid, k, item_u):
         cpsindex = {} #the projection of subset and its index in cps
         index = 0
         overlapped_items = [i for i in user.item_list if i in item_u]
-        #calculate op and cp
+        # a small optimization
+        # if the overlapped item list is empty, which means that the ops is empty,
+        # then we can pass this iteration step because the user_res equals zero.
         if len(overlapped_items) > 0:
             for prefer in graph[0][uid].pref_list:
+                #calculate op and cp
                 if prefer.preferred in overlapped_items:
                     op.append(prefer)
                 else:

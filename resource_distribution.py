@@ -48,9 +48,10 @@ def resource_distribution(graph, uid, k, item_u):
             user_res = len(op) / ((len(graph[2])-1) * len(cp))    #unit user resource for redistribution
             #calculate final resources located on each item
             for subset in cps:
+                r_i = user_res / len(cps) * len(subset)
                 item = subset[0].preferred
                 idx = unselected_list.index(item)
-                unselected_list[idx].r = unselected_list[idx].r + user_res
+                unselected_list[idx].r = unselected_list[idx].r + r_i
         else:
             continue
 
